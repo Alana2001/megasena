@@ -1,0 +1,80 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resultados</title>
+    </head>
+    <body>
+        <h1>Bem-Vindo a Página de Resultados</h1>
+        <h3>Jogo do Bicho</h3>
+        <br>
+        <div class="row">
+		    <div class="col-12">
+			    <div class="contact-form-area">
+				    <form action="{% url 'verifica_resultado' %}" method="post" enctype="multipart/form-data">
+					    {% csrf_token %}
+					<div class="row">
+                        <label for="">Selecione o concurso que deseja verificar: </label>
+                        <select class="form-control form-control-sm" name="concursoselecionado">
+                            <option>Selecione</option>
+                                {% if task %} {% for item in task %}
+                            <option value="{{ item.concurso }}">{{ item.concurso }}</option>
+                                {% endfor %} {% else %} {% endif %}
+                        </select>
+                        <br>
+						<div class="col-12 text-center">
+							<button class="btn delicious-btn mt-30" type="submit">Verificar</button>
+						</div>
+                    </div>
+                </form>
+                    {% if result %}
+                <div>
+                    <h1>{{result}}</h1>
+                </div>
+                    {% endif %}
+            </div>
+        </div>                                    
+    </div>
+    <br>
+    <br>
+    <h3>Loteria (Mega-Sena)</h3>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <br>
+        <div class="row">
+		    <div class="col-12">
+			    <div class="contact-form-area">
+				    <form action="{% url 'verifica_resultado' %}" method="post" enctype="multipart/form-data">
+					    {% csrf_token %}
+					<div class="row">
+                        <label for="">Selecione o Jogo que deseja verificar: </label>
+                        <select class="form-control form-control-sm" name="numeroselecionado">
+                            <option>Selecione</option>
+                                {% if task %} {% for item in task %}
+                            <option value="{{ item.megasena }}">{{ item.megasena }}</option>
+                                {% endfor %} {% else %} {% endif %}
+                        </select>
+                        <br>
+						<div class="col-12 text-center">
+							<button class="btn delicious-btn mt-30" type="submit">Verificar</button>
+						</div>
+                    </div>
+                </form>
+                    {% if result %}
+                <div>
+                    <h1>{{result}}</h1>
+                </div>
+                    {% endif %}
+            </div>
+        </div>                                    
+    </div>
+    <br>
+    <br>
+
+    </body>
+</html>

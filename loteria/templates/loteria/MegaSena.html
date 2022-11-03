@@ -1,0 +1,34 @@
+<!DOCYTPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>SORTEIO</title>
+    <style>
+        #numerof {
+            font-size: 75px;
+            font-family: 'arial black', 'avant garde', 'sans-serif';
+        }
+    </style>
+    <script>
+        function gerarNumero() {
+            var numero = Math.floor(Math.random() * 899999) + 100000;
+            document.getElementById("numerof").innerHTML = numero;
+
+            var agora = new Date(Date.now()),
+                dia = agora.getDate(),
+                mes = agora.getMonth(),
+                ano = agora.getFullYear(),
+    //            agora = new Date(ano,mes,dia,23,59,55),
+                amanha = new Date(ano, mes, dia+1);
+                gatilho = amanha - agora;
+           
+            setTimeout(gerarNumero, gatilho);
+        }
+    </script>
+</head>
+<body onload="gerarNumero()">  
+   <div id="numerof"></div>
+</body>
+</html>
+
+
